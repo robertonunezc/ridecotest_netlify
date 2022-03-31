@@ -2,8 +2,9 @@ const getTokenFromStorage = () => {
     const token = window.localStorage.getItem("token");
     return `Bearer ${token}`
 }
+const host = '${host}/'
 const saveItemRequest = async (item) => {
-    const response = await fetch("http://localhost:8000/api/v1/grocery_list/item", {
+    const response = await fetch(`${host}/api/v1/grocery_list/item`, {
         method: 'POST',
         headers: {
             'Authorization': getTokenFromStorage(),
@@ -15,7 +16,7 @@ const saveItemRequest = async (item) => {
 }
 const updateItemRequestRequest = async (item) => {
     console.log("Finish edit")
-    const response = await fetch(`http://localhost:8000/api/v1/grocery_list/item/${item.id}`, {
+    const response = await fetch(`${host}/api/v1/grocery_list/item/${item.id}`, {
         method: 'PUT',
         headers: {
             Authorization: getTokenFromStorage(),
@@ -28,7 +29,7 @@ const updateItemRequestRequest = async (item) => {
 }
 const deleteItemFromGroceryListRequest = async (itemId) => {
     console.log("Deleting item")
-    const response = await fetch(`http://localhost:8000/api/v1/grocery_list/item/${itemId}`, {
+    const response = await fetch(`${host}/api/v1/grocery_list/item/${itemId}`, {
         method: 'DELETE',
         headers: {
             Authorization: getTokenFromStorage()
@@ -39,7 +40,7 @@ const deleteItemFromGroceryListRequest = async (itemId) => {
 const getGroceryListDetailsRequest = async () => {
     //With a proper router component configured the URL value can be dynamic
     console.log("GET ALL GL")
-    const response = await fetch("http://localhost:8000/api/v1/grocery_list/1", {
+    const response = await fetch(`${host}/api/v1/grocery_list/1`, {
         headers: {
             Authorization: getTokenFromStorage()
         }
@@ -56,7 +57,7 @@ const getGroceryListDetailsRequest = async () => {
 
 
 const login = async (username, password) => {
-    const response = await fetch("http://localhost:8000/api/v1/api-token-auth/", {
+    const response = await fetch(`${host}/api/v1/api-token-auth/`, {
         method: 'POST',
         headers: {
             'Authorization': getTokenFromStorage(),

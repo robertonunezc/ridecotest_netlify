@@ -31,11 +31,14 @@ export default {
       console.log("Fetching data");
       const token = window.localStorage.getItem("token");
 
-      const response = await fetch("/api/v1/grocery_list/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        "https://ridecotest-api.herokuapp.com/api/v1/grocery_list/",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (response.ok) {
         // get the response body (the method explained below)
         const json = await response.json();

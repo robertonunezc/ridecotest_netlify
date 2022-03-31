@@ -2,7 +2,7 @@ const getTokenFromStorage = () => {
     const token = window.localStorage.getItem("token");
     return `Bearer ${token}`
 }
-const host = '${host}/'
+const host = "https://ridecotest-api.herokuapp.com";
 const saveItemRequest = async (item) => {
     const response = await fetch(`${host}/api/v1/grocery_list/item`, {
         method: 'POST',
